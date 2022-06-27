@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Journey Digital</title>
+</head>
+<body class="hidden">
+
+    <!--Preloader-->
+    <div id="onload" class="centrado">
+        <img src="./assets/logos/codere-logo.svg" alt="" id="logoPreloader" class="me-2">
+        <div class="lds-ripple"><div></div><div></div></div>
+    </div>
+
+    <!--Modal Edad-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content" id="modalEdad">
+            <div class="modal-body">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12">
+                            <img id="logo" class="" src="./assets/logos/Yak.svg" alt="" style="width: 10%; margin-right: 1em;">
+                            <img src="./assets/logos/CasinoCodere.svg" alt="" style="width: 10%; margin-right: 1em;">
+                            <img src="./assets/logos/RoyalYak.png" alt="" style="width: 10%; margin-right: 1em;">
+                            <img src="./assets/logos/JackPot.png" alt="" style="width: 10%; margin-right: 1em;">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center text-center">
+                        <div class="col-12">
+                            <h1 class="txt-edad">¿ERES MAYOR DE EDAD?</h1>
+                            <p class="txt-p-edad">
+                                Nos preocupamos por la prevención de juegos de casino a menores de edad. <br>
+                                Si tienes menos de 18 años no puedes jugar.
+                            </p>
+                            <button type="button" class="btn btn-edad" id="btn-edad-si">Si</button>
+                            <button type="button" class="btn btn-edad" id="btn-edad-no">No</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!--Modal Formulario-->
+    <div class="modal fade" id="modalFormulario" tabindex="-1" aria-labelledby="modalFormularioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered ">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title">
+                    Captura tus datos para identificarte al momento de canjear tu beneficio. <br>
+                    ¡SOLO PARA CLIENTES NUEVOS!
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div id="cargador"></div>
+
+                            <form id="formpremio" method="post">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="nombre">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" autocomplete="on" maxlength="50">
+                                                    <small id="nombreHelp" class="form-text"></small>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="nombre">Apellido</label>
+                                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" autocomplete="on" maxlength="50">
+                                                    <small id="apellidoHelp" class="form-text"></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="telefono">Número de teléfono</label>
+                                            <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Teléfono" autocomplete="on">
+                                            <small id="telefonolHelp" class="form-text"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo">Correo electrónico</label>
+                                            <input type="email" class="form-control" id="correo" name="correo" aria-describedby="emailHelp" placeholder="Correo electrónico" autocomplete="on" maxlength="50">
+                                            <small id="emailHelp" class="form-text"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                                            <input type="date" class="form-control" id="nacimiento" name="nacimiento"  max="2003-08-30" autocomplete="on">
+                                            <small id="fechaNacimHelp" class="form-text"></small>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" id="avisoPrivCheck">
+                                              <label class="form-check-label" for="gridCheck" id="txt-avisoPrivCheck">
+                                                He leído y acepto el <a href="https://crm.codere.com/mexico/Media/TEMPLATES-MAILING/Aviso%20de%20Privacidad%20Club%20Codere%20CODERE%20MEXICO.pdf" id="txt-avisoPrivCheck2">Aviso de privacidad</a>
+                                              </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center text-center">
+                                    <div class="col-12">
+                                        <button id="btn-registrarse" type="button" class="btn">REGISTRARSE</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <header class="hidden2">
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+            <div class="container" data-aos="fade-down" data-aos-duration="1000">
+                <a class="navbar-brand" href="index.html">
+                    <img src="./assets/logos/Yak.svg" alt="" class="logos">
+                    <img src="./assets/logos/CasinoCodere.svg" alt="" class="logos">
+                    <img src="./assets/logos/RoyalYak.png" alt="" class="logos">
+                    <img src="./assets/logos/JackPot.png" alt="" class="logos">
+                </a>
+                <button
+                    class="navbar-toggler collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="toggler-icon top-bar"></span>
+                    <span class="toggler-icon middle-bar"></span>
+                    <span class="toggler-icon bottom-bar"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="mx-auto"></div>
+                    <ul class="navbar-nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">Ofertas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section-slot">Tirar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section-salas">Salas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section-app">App</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="" id="slideProm" >
+        <div class="justify-content-center text-center">
+            <div>
+
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slide2 shadow-4" id="slide1">
+                            <h1 class="txt-slide">EMOCIONATE Y DIVIÉRTETE <br> EN NUESTRAS MESAS.</h1>
+                        </div>
+                        <div class="swiper-slide slide2 shadow-4" id="slide2">
+                            <h1 class="txt-slide">LAS MEJORES TERMINALES <br> TE ESPERAN.</h1>
+                        </div>
+                    </div>
+
+                    <!-- <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div> -->
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section id="section-slot">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <h1 class="txt-sec-slot">"UN MUNDO <span style="color: #ffffff;">DE DIVERSIÓN"</span></h1>
+                    <button id="btnslot" type="button" class="btn btn-general" ></button> <br>
+                    <img id="slots" src="./assets/img/pierde 1.png" onclick="activarslot(1)">
+                    <form id="idform">
+                        <input type="hidden" id="idcliente" name="idcliente">
+                        <input type="hidden" id="premiocl" name="premiocl" value="">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-pasos">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-4 col-12">
+                    <div class="icobox__icon-wrapper">
+                        <div class="icobox__icon">
+                            <img src="./assets/img/1.png" alt="número uno" style="width: 50px;">
+                        </div>
+                    </div>
+                    <h3 class="title-pasos">Registrate</h3>
+                    <p class="txt-pasos">Si aún no eres usuario, abre tu cuenta, es gratis y sólo toma 15 segundos.</p>
+                </div>
+
+                <div class="col-lg-4 col-12">
+                    <div class="icobox__icon-wrapper">
+                        <div class="icobox__icon">
+                            <img src="./assets/img/2.png" alt="número uno" style="width: 50px;">
+                        </div>
+                    </div>
+                    <h2 class="title-pasos">TIRA</h2>
+                    <p class="txt-pasos">Recibe grandes beneficios.</p>
+                </div>
+
+                <div class="col-lg-4 col-12">
+                    <div class="icobox__icon-wrapper">
+                        <div class="icobox__icon">
+                            <img src="./assets/img/3.png" alt="número uno" style="width: 50px;">
+                        </div>
+                    </div>
+                    <h2 class="title-pasos">Canjea</h2>
+                    <p class="txt-pasos">Encuentra tu sala más cercana y canjea tu beneficio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-ldn">
+        <div class="container-fluid">
+            <div class="row">
+                <div id="ldn-terminales" class="col-lg-4 col-12 card-ldn">
+                    <p class="txt-card-ldn">TERMINALES</p>
+                    <span class="txt2-card-ldn">Las mejores terminales.</span> <br><br>
+                </div>
+                <div id="ldn-juegos-vivo" class="col-lg-4 col-12 card-ldn">
+                    <p class="txt-card-ldn">JUEGOS EN VIVO</p>
+                    <span class="txt2-card-ldn">Ven y diviértete con nuestros juegos en vivo.</span> <br><br>
+                </div>
+                <div id="ldn-ayb" class="col-lg-4 col-12 card-ldn">
+                    <p class="txt-card-ldn">ALIMENTOS Y BEBIDAS</p>
+                    <span class="txt2-card-ldn">Combina la diversión con tus snacks favoritos.</span> <br><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-salas">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <h1 class="txt-sec-salas">UBICA <span style="color: #ffffff;">TU SALA FAVORITA</span></h1>
+                    <div class="row justify-content-center">
+                        <div class="col-6">
+                            <p class="txt-select-estado">SELECIONA TU ESTADO:</p>
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected">SELECCIONA UNO</option>
+                                <option value="1">AGUASCALIENTES</option>
+                                <option value="2">BAJA CALIFORNIA</option>
+                                <option value="20">BAJA CALIFORNIA SUR</option>
+                                <option value="3">CAMPECHE</option>
+                                <option value="4">CHIHUAHUA</option>
+                                <option value="5">CDMX</option>
+                                <option value="6">DURANGO</option>
+                                <option value="7">ESTADO DE MÉXICO</option>
+                                <option value="8">GUANAJUATO</option>
+                                <option value="9">GUERRERO</option>
+                                <option value="10">JALISCO</option>
+                                <option value="11">MICHOACAN</option>
+                                <option value="21">MORELOS</option>
+                                <option value="12">NUEVO LEÓN</option>
+                                <option value="13">PUEBLA</option>
+                                <option value="14">QUINTANA ROO</option>
+                                <option value="15">SAN LUIS POTOSÍ</option>
+                                <option value="16">SINALOA</option>
+                                <option value="17">SONORA</option>
+                                <option value="18">TABASCO</option>
+                                <option value="21">VERACRUZ</option>
+                                <option value="22">YUCATÁN</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="mapac">
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1O7eIyuEK-GlJNrBEk8-J1l3hCUrCcdI6&hl=es&ehbc=2E312F" width="100%" height="480"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-app">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-12">
+                    <h1 class="txt-sec-app">DESCARGA <span style="color: #ffffff;">NUESTRA APP</span></h1>
+                    <img id="logo-app" src="./assets/logos/app.png" alt="">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-3 col-12">
+                            <img src="./assets/img/appstore.png" alt="" class="appstore">
+                        </div>
+                        <div class="col-lg-3 col-12">
+                            <img src="./assets/img/playstore.png" alt="" class="playstore">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Footer-->
+    <footer class="page-footer">
+
+        <div class="container">
+            <div class="row justify-content-center text-center" style="display: flex; align-items: center;">
+                <div class="col-3" >
+                    <img id="logoYak" class="rounded mx-auto d-block" src="./assets/logos/Yak.svg" alt="" >
+                </div>
+                <div class="col-3" >
+                    <img id="logoCCodere" class="rounded mx-auto d-block" src="./assets/logos/CasinoCodere.svg" alt="" >
+                </div>
+                <div class="col-3" >
+                    <img id="logoRYak" class="rounded mx-auto d-block" src="./assets/logos/RoyalYak.png" alt="" >
+                </div>
+                <div class="col-3" >
+                    <img id="logoJackPot" class="rounded mx-auto d-block" src="./assets/logos/JackPot.png" alt="" >
+                </div>
+            </div>
+
+            <div class="row justify-content-center text-center">
+
+                <div class="col-lg-12 mt-3">
+                    <p id="txt-siguenos">¡Síguenos en nuestras redes sociales!</p>
+                    <img id="imgLogoCodere" src="./assets/logos/codere-logo.svg" alt="">
+                </div>
+
+                <div class="col-lg-12 mt-4">
+                    <a href="https://twitter.com/Yak_MX" target="_blank" class="me-3 redSociales">
+                        <!-- <img src="./imagenes/icons/twitter-brands.svg" alt="" class="social-icon" style="width: 27px;"> -->
+                        <i class="fab fa-twitter social-icon fa-2x"></i>
+                    </a>
+
+                    <a href="https://www.facebook.com/YakMexico/" target="_blank" class="me-3 redSociales">
+                        <!-- <img src="./imagenes/icons/facebook-f-brands.svg" alt="" class="social-icon" style="width: 14px;"> -->
+                        <i class="fab fa-facebook-f social-icon fa-2x"></i>
+                    </a>
+
+                    <a href="https://www.instagram.com/yakmexico/?hl=es" target="_blank" class="me-3 redSociales">
+                        <!-- <img src="./imagenes/icons/instagram-brands.svg" alt="" class="social-icon" style="width: 24px;"> -->
+                        <i class="fab fa-instagram social-icon fa-2x"></i>
+                    </a>
+                </div>
+
+                <div class="col-lg-12 mt-4">
+                    <p id="derechos"><a id="avisoPriv" href="https://crm.codere.com/mexico/Media/TEMPLATES-MAILING/Aviso%20de%20Privacidad%20Club%20Codere%20CODERE%20MEXICO.pdf" target="_blank">AVISO DE PRIVACIDAD DEL CLUB</a>  |  Todos los derechos reservados por Codere ©</p>
+                </div>
+
+            </div>
+
+            <!--Copyright-->
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-6 col-5">
+                    <img id="imgResponsable" src="./assets/plecas/img-resp-social2022-codere.png" alt="" >
+                    <p id="parrafoLegal">
+                        SÓLO PARA MAYORES DE 18 AÑOS. <br>
+                        Administradora Mexicana de Hipódromo S.A. de C.V. Permiso SEGOB DGG/SP/450/97. Mio Games S.A. de C.V. Permiso SEGOB: DGAJS/SCEV/P-01/2005. 
+                        Libros Foraneos S.A. de C.V. Permiso SEGOB: 2768. Recreativos Marina S.A. de C.V. Permiso SEGOB: DGAJS/P-01/2012. Operadora Cantabria S.A. de C.V. 
+                        Permiso SEGOB: 6752, 7890, 7904 y 8017.  Promojuegos de México S.A. de C.V.  Permiso SEGOB: DGAJS/SCEVF/P-04/2005. Operadora de Espectaculos
+                        Deportivos S.A. de C.V. Permiso SEGOB: 000006.
+                    </p>
+                </div>
+                <div class="col-lg-6 col-7">
+                    <img id="pleca" src="./assets/plecas/pleca-2022.png">
+                </div>
+            </div>
+            <!--/.Copyright-->
+        </div>
+        <!--/.Footer Links-->
+
+    
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/70e2dea142.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js" integrity="sha256-6XMVI0zB8cRzfZjqKcD01PBsAy3FlDASrlC8SxCpInY=" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        effect: "fade",
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
+</body>
+</html>
