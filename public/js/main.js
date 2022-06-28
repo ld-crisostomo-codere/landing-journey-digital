@@ -33,6 +33,7 @@ let txt_avisoPrivCheck2 = document.getElementById('txt-avisoPrivCheck2');
 let registrado = false;
 let ganar = false;
 let premio = true;
+let slotActivado = false;
 
 btn_edad_si.addEventListener("click", mayorEdad);
 btn_edad_no.addEventListener("click", menorEdad);
@@ -54,6 +55,7 @@ function slot() {
   if(!registrado) {
     promModal.show();
   } else {
+    activarslot(1)
     // Juego Slot
     if (ganar) {
       // Ya gano
@@ -178,14 +180,20 @@ function registrar() {
 }
 
 function activarslot(nsl){
-  if (nsl=="1") { 
-          document.getElementById('slots').src="assets/img/slot/ftu-unscreen.gif";
-          btnslot.innerHTML='PARAR';
-          registrado=true;
+  console.log('Entro');
+  if(slotActivado) {
+    pararslot(1);
+  } else {
+    if (nsl=="1") { 
+            document.getElementById('slots').src="assets/img/slot/ftu-unscreen.gif";
+            btnslot.innerHTML='Parar';
+            registrado=true;
+            slotActivado =true;
+    }
   }
    const myTimeout = setTimeout(function(){
      pararslot(1)
-   },3000);
+   },4000);
 }
 
 function pararslot(psl){
@@ -195,7 +203,7 @@ function pararslot(psl){
     if (nal=="1") {
       document.getElementById('slots').src="assets/img/slot/gane202.png";
       premiocl.value="XXXXXX";
-      btnslot.innerHTML='<a href="#section-salas>Ubica tu sala</a>';
+      btnslot.innerHTML='Ubica tu sala';
       actpremio();
     }
 
@@ -206,25 +214,27 @@ function pararslot(psl){
     if (nal=="3") { 
       document.getElementById('slots').src="assets/img/slot/gane101.png";
       premiocl.value="XXXXXX";
-      btnslot.innerHTML='<a href="#section-salas>Ubica tu sala</a>';
+      btnslot.innerHTML='Ubica tu sala';
       actpremio();	
     }
       if (nal=="4") {
       document.getElementById('slots').src="assets/img/slot/gane303.png";
       premiocl.value="XXXXXX";
-      btnslot.innerHTML='<a href="#section-salas>Ubica tu sala</a>';
+      btnslot.innerHTML='Ubica tu sala';
       actpremio();	
     }
             
             
   }
+
+  slotActivado = false;
 }
 
 function actpremio() {
   if(premio) {
     swal("¡Felicidades!", "Acude a tu sala más cercana con este código "+ premiocl.value, "success");
   } else {
-    swal("Good job!", "You clicked the button!", "error");
+    swal("Upps!", "Ocurrio un error al generar tu código", "error");
 
   }
 }
