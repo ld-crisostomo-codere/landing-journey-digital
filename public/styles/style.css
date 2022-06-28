@@ -213,28 +213,28 @@
 }
 
 #slide1 {
-    background: rgba(0, 0, 0, 0.5) url('../assets/img/banner11.jpg');
+    background: rgba(0, 0, 0, 0.5) url('../resources/img/banner11.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: darken;
 }
 
 #slide2 {
-    background: rgba(0, 0, 0, 0.5) url('../assets/img/banner22.jpg');
+    background: rgba(0, 0, 0, 0.5) url('../resources/img/banner22.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: darken;
 }
 
 #slide3 {
-    background: rgba(0, 0, 0, 0.5) url('../assets/img/banner33.jpg');
+    background: rgba(0, 0, 0, 0.5) url('../resources/img/banner33.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: darken;
 }
 
 #section-slot, #section-pasos {
-    background: url('../assets/img/back-sec-1.png');
+    background: url('../resources/img/back-sec-1.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -389,19 +389,19 @@ vertical-align: middle;
 }
 
 #ldn-terminales {
-    background: #00000060 url('../assets/img/banner33.jpg') no-repeat center; 
+    background: #00000060 url('../resources/img/banner33.jpg') no-repeat center; 
     background-size: cover; 
     background-blend-mode: darken;
 }
 
 #ldn-juegos-vivo {
-    background: #00000080 url('../assets/img/juegos-en-vivo.jpg') no-repeat center; 
+    background: #00000080 url('../resources/img/juegos-en-vivo.jpg') no-repeat center; 
     background-size: cover; 
     background-blend-mode: darken;
 }
 
 #ldn-ayb {
-    background: #00000020 url('../assets/img/ayb.jpg') no-repeat center; 
+    background: #00000020 url('../resources/img/ayb.jpg') no-repeat center; 
     background-size: cover; 
     background-blend-mode: darken;
 }
@@ -443,7 +443,7 @@ vertical-align: middle;
 }
 
 #section-app {
-    background: url("../assets/img/desapp.png") no-repeat;
+    background: url("../resources/img/desapp.png") no-repeat;
     background-size: cover;
     background-attachment: fixed;
     display: flex; 

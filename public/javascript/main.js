@@ -115,7 +115,7 @@ function registrar() {
 
   if (error === 0) {
     if(avisoPrivCheck == true) {
-      document.getElementById("cargador").innerHTML='<center><img src="./assets/img/loading.gif" style="width:10%; padding-top:40px;"></center>';
+      document.getElementById("cargador").innerHTML='<center><img src="./resources/img/loading.gif" style="width:10%; padding-top:40px;"></center>';
 			document.getElementById("formpremio").style.display="none";
 
       // var data =  '<request><CDR_spcAlta_spcDigital><MessageId /><MessageType>Integration Object</MessageType><IntObjectName>CDR Alta Digital IO</IntObjectName><IntObjectFormat>Siebel Hierarchical</IntObjectFormat><ListOfCDR_spcAlta_spcDigital_spcIO><CDR_spcAlta_spcDigital><First_spcName>PRUEBA DIGITAL MKT 1 Postman</First_spcName><Last_spcName>PRUEBA DIGITAL MKT 1 Postman</Last_spcName><Maiden_spcName>PRUEBA DIGITAL MKT 1 Postman</Maiden_spcName><CDR_spcFecha_spcde_spcNacimiento>10/10/2015</CDR_spcFecha_spcde_spcNacimiento><Cellular_spcPhone_spc35>5554029177</Cellular_spcPhone_spc35><EMail_spcAddr>MKT_prueba1_postman@codere.com</EMail_spcAddr></CDR_spcAlta_spcDigital></ListOfCDR_spcAlta_spcDigital_spcIO></CDR_spcAlta_spcDigital></request>'
@@ -201,7 +201,7 @@ function activarslot(nsl){
     pararslot(1);
   } else {
     if (nsl=="1") { 
-            document.getElementById('slots').src="assets/img/slot/ftu-unscreen.gif";
+            document.getElementById('slots').src="resources/img/slot/ftu-unscreen.gif";
             btnslot.innerHTML='Parar';
             registrado=true;
             slotActivado =true;
@@ -217,24 +217,24 @@ function pararslot(psl){
     //document.getElementById('slots').src="images/Slotg.gif";
     var nal = Math.floor(Math.random()*(1+4));
     if (nal=="1") {
-      document.getElementById('slots').src="assets/img/slot/gane202.png";
+      document.getElementById('slots').src="resources/img/slot/gane202.png";
       premiocl.value="XXXXXX";
       btnslot.innerHTML='Ubica tu sala';
       actpremio();
     }
 
     if (nal=="2") {
-      document.getElementById('slots').src="assets/img/slot/pierde202.png";
+      document.getElementById('slots').src="resources/img/slot/pierde202.png";
       btnslot.innerHTML='Jugar de nuevo';
     }
     if (nal=="3") { 
-      document.getElementById('slots').src="assets/img/slot/gane101.png";
+      document.getElementById('slots').src="resources/img/slot/gane101.png";
       premiocl.value="XXXXXX";
       btnslot.innerHTML='Ubica tu sala';
       actpremio();	
     }
       if (nal=="4") {
-      document.getElementById('slots').src="assets/img/slot/gane303.png";
+      document.getElementById('slots').src="resources/img/slot/gane303.png";
       premiocl.value="XXXXXX";
       btnslot.innerHTML='Ubica tu sala';
       actpremio();	
