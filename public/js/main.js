@@ -118,21 +118,37 @@ function registrar() {
       document.getElementById("cargador").innerHTML='<center><img src="./assets/img/loading.gif" style="width:10%; padding-top:40px;"></center>';
 			document.getElementById("formpremio").style.display="none";
 
-      var data =  '<request><CDR_spcAlta_spcDigital><MessageId /><MessageType>Integration Object</MessageType><IntObjectName>CDR Alta Digital IO</IntObjectName><IntObjectFormat>Siebel Hierarchical</IntObjectFormat><ListOfCDR_spcAlta_spcDigital_spcIO><CDR_spcAlta_spcDigital><First_spcName>PRUEBA DIGITAL MKT 1 Postman</First_spcName><Last_spcName>PRUEBA DIGITAL MKT 1 Postman</Last_spcName><Maiden_spcName>PRUEBA DIGITAL MKT 1 Postman</Maiden_spcName><CDR_spcFecha_spcde_spcNacimiento>10/10/2015</CDR_spcFecha_spcde_spcNacimiento><Cellular_spcPhone_spc35>5554029177</Cellular_spcPhone_spc35><EMail_spcAddr>MKT_prueba1_postman@codere.com</EMail_spcAddr></CDR_spcAlta_spcDigital></ListOfCDR_spcAlta_spcDigital_spcIO></CDR_spcAlta_spcDigital></request>'
+      // var data =  '<request><CDR_spcAlta_spcDigital><MessageId /><MessageType>Integration Object</MessageType><IntObjectName>CDR Alta Digital IO</IntObjectName><IntObjectFormat>Siebel Hierarchical</IntObjectFormat><ListOfCDR_spcAlta_spcDigital_spcIO><CDR_spcAlta_spcDigital><First_spcName>PRUEBA DIGITAL MKT 1 Postman</First_spcName><Last_spcName>PRUEBA DIGITAL MKT 1 Postman</Last_spcName><Maiden_spcName>PRUEBA DIGITAL MKT 1 Postman</Maiden_spcName><CDR_spcFecha_spcde_spcNacimiento>10/10/2015</CDR_spcFecha_spcde_spcNacimiento><Cellular_spcPhone_spc35>5554029177</Cellular_spcPhone_spc35><EMail_spcAddr>MKT_prueba1_postman@codere.com</EMail_spcAddr></CDR_spcAlta_spcDigital></ListOfCDR_spcAlta_spcDigital_spcIO></CDR_spcAlta_spcDigital></request>'
 
-      console.log(data);
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/xml");
+      myHeaders.append("Authorization", "Basic UkVTVFVTUjpVc2VyQDIxUmVzdA==");
+      
+      var raw = "<request>\n   <CDR_spcAlta_spcDigital>\n      <MessageId />\n      <MessageType>Integration Object</MessageType>\n      <IntObjectName>CDR Alta Digital IO</IntObjectName>\n      <IntObjectFormat>Siebel Hierarchical</IntObjectFormat>\n      <ListOfCDR_spcAlta_spcDigital_spcIO>\n            <CDR_spcAlta_spcDigital>\n               <First_spcName>PRUEBA DIGITAL MKT 1 Postman</First_spcName>\n               <Last_spcName>PRUEBA DIGITAL MKT 1 Postman</Last_spcName>\n               <Maiden_spcName>PRUEBA DIGITAL MKT 1 Postman</Maiden_spcName>\n               <CDR_spcFecha_spcde_spcNacimiento>10/10/2015</CDR_spcFecha_spcde_spcNacimiento>\n               <Cellular_spcPhone_spc35>5554029177</Cellular_spcPhone_spc35>\n               <EMail_spcAddr>MKT_prueba1_postman@codere.com</EMail_spcAddr>\n            </CDR_spcAlta_spcDigital>\n        </ListOfCDR_spcAlta_spcDigital_spcIO>\n   </CDR_spcAlta_spcDigital>\n</request>\n";
+      
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      
+      fetch("https://dip20mex.cdrsbg.com/siebel/v1.0/workflow/CDR%20Alta%20Digital%20WF", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
 
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'https://dip20mex.cdrsbg.com/siebel/v1.0/workflow/CDR%20Alta%20Digital%20WF', true);
-      xhr.setRequestHeader('Content-Type', 'application/xml');
-      xhr.setRequestHeader('Authorization', 'Basic UkVTVFVTUjpVc2VyQDIxUmVzdA==');
-      xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+      // const xhr = new XMLHttpRequest();
+      // xhr.open('POST', 'https://dip20mex.cdrsbg.com/siebel/v1.0/workflow/CDR%20Alta%20Digital%20WF', true);
+      // xhr.setRequestHeader('Content-Type', 'application/xml');
+      // xhr.setRequestHeader('Authorization', 'Basic UkVTVFVTUjpVc2VyQDIxUmVzdA==');
+      // xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 
-      xhr.onreadystatechange = function() {
-        console.log(xhr); // get the data from xhr and log it
-      }
+      // xhr.onreadystatechange = function() {
+      //   console.log(xhr); // get the data from xhr and log it
+      // }
 
-      xhr.send(data);
+      // xhr.send(data);
 
 
       // fetch('https://dip20mex.cdrsbg.com/siebel/v1.0/workflow/CDR%20Alta%20Digital%20WF', {
