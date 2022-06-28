@@ -76,6 +76,9 @@ function registrar() {
   let error = 0;
 
 
+  // FIXME! Validar los largos de las cadenas para todos los campos
+  // Alta Socios Digital-Webservices.doc page 8
+  // < First_spcName ></ First_spcName >    (Tipo de Datos: String 50) 
   if (namec='' || namec.length<=3) {
     nombreHelp.innerHTML = 'Ingresa tu nombre.';
     error=error+1;
@@ -106,6 +109,8 @@ function registrar() {
     emailHelp.innerHTML="";
   }
 
+  // FIXME! La validacion de la fecha no puede ser harcodeada
+  // https://stackoverflow.com/questions/37002681/subtract-days-months-years-from-a-date-in-javascript
   if ( nacimiento>="2004-07-2") {
     fechaNacimHelp.innerHTML ="Eres menor de edad.";
     error=error+1;
@@ -115,9 +120,12 @@ function registrar() {
 
   if (error === 0) {
     if(avisoPrivCheck == true) {
+      // if((error === 0) && (avisoPrivCheck == true)){}
       document.getElementById("cargador").innerHTML='<center><img src="./assets/img/loading.gif" style="width:10%; padding-top:40px;"></center>';
 			document.getElementById("formpremio").style.display="none";
 
+      // FIXME! No olvidar que esta harcodeado, si haces pruebas puedes agregar un diferencial en el correo y el nombre para que no te marque error de que es el mismo registro
+      // Puedes concatenar la fecha unix timestamp al correo y al nombre https://attacomsian.com/blog/unix-timestamp-javacript
       var data =  '<request><CDR_spcAlta_spcDigital><MessageId /><MessageType>Integration Object</MessageType><IntObjectName>CDR Alta Digital IO</IntObjectName><IntObjectFormat>Siebel Hierarchical</IntObjectFormat><ListOfCDR_spcAlta_spcDigital_spcIO><CDR_spcAlta_spcDigital><First_spcName>PRUEBA DIGITAL MKT 1 Postman</First_spcName><Last_spcName>PRUEBA DIGITAL MKT 1 Postman</Last_spcName><Maiden_spcName>PRUEBA DIGITAL MKT 1 Postman</Maiden_spcName><CDR_spcFecha_spcde_spcNacimiento>10/10/2015</CDR_spcFecha_spcde_spcNacimiento><Cellular_spcPhone_spc35>5554029177</Cellular_spcPhone_spc35><EMail_spcAddr>MKT_prueba1_postman@codere.com</EMail_spcAddr></CDR_spcAlta_spcDigital></ListOfCDR_spcAlta_spcDigital_spcIO></CDR_spcAlta_spcDigital></request>'
 
       console.log(data);
@@ -131,6 +139,43 @@ function registrar() {
       xhr.onreadystatechange = function() {
         console.log(xhr); // get the data from xhr and log it
       }
+
+      /**
+       * CORS error
+       * 
+       * https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+       * https://cloud.google.com/storage/docs/cross-origin
+       * 
+       * Posibles soluciones del cors para Firebase:
+       * 
+       * Ejemplo 1)
+       * https://stackoverflow.com/questions/42755131/enabling-cors-in-cloud-functions-for-firebase
+       * 
+var cors = require('cors');    
+
+exports.test = functions.https.onRequest((request, response) => {
+   cors(request, response, () => {
+     response.status(500).send({test: 'Testing functions'});
+   })
+})
+       * 
+       * 
+       * Ejemplo 2)
+       * https://akhromieiev.com/enabling-cors-in-cloud-functions-for-firebase/
+       * 
+       * npm i cors --save
+       * 
+const functions = require('firebase-functions');
+const cors = require('cors');
+
+exports.addMessage = functions.https.onRequest((req, res) => {
+  cors()(req, res, () => {
+    return res.json({status: 'ok'});
+  });
+});
+       * 
+       * 
+       */
 
       xhr.send(data);
 
